@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Association Dashboard</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <link href="css/normalize.css" rel="stylesheet" media="all">
+  <link href="css/styles.css" rel="stylesheet" media="all">
+  <!--[if lt IE 9]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+  <script>
+    // define the callAPI function that takes a first name and last name as parameters
+    var callAPI = (firstName, lastName) => {
+      // instantiate a headers object
+      var myHeaders = new Headers();
+      // add content type header to object
+      myHeaders.append("Content-Type", "application/json");
+      // using built in JSON utility package turn object to string and store in a variable
+      var raw = JSON.stringify({ "firstName": firstName, "lastName": lastName });
+      // create a JSON object with parameters for API call and store in a variable
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      // make API call with parameters and use promises to get response
+      fetch("https://oyw9mja0q3.execute-api.us-east-2.amazonaws.com/dev3210", requestOptions)
+        .then(response => response.text())
+        .then(result => alert(JSON.parse(result).body))
+        .catch(error => console.log('error', error));
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <h1>Association Dashboard</h1>
+        <h3>Customized Convention/Meeting Registration</h3>
+      </div>
+      <div class="footer">
+        <p>For more info please call 1.330.667.3168</p>
+      </div>
+    </div>
+    <div>
+      <!--
+      <form>
+        <label>First Name :</label>
+        <input type="text" id="fName">
+        <label>Last Name :</label>
+        <input type="text" id="lName">
+        
+        <button type="button"
+          onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call
+          API</button>
+      </form>
+      // -->
+    </div>
+  </div>
+</body>
+
+</html>
