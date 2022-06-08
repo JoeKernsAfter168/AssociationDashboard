@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.98.0">
+  <title>Association Dashboard - Contact Us</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sticky-footer-navbar/">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+  <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+  <meta name="theme-color" content="#712cf9">
+
+  <script src="js/core.js"></script>
+  <script src="js/enc-base64.js"></script>
+  <script src="js/hmac.js"></script>
+  <script src="js/sha256.js"></script>
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+  <script>
+    // define the callAPI function that takes a first name and last name as parameters
+    var callAPI = () => {
+      // instantiate a headers object
+      var myHeaders = new Headers();
+      // add content type header to object
+      myHeaders.append("Content-Type", "application/json");
+
+      // get form values
+      firstName = document.getElementById('fName').value;
+      lastName = document.getElementById('lName').value;
+      email = document.getElementById('email').value;
+      message = document.getElementById('message').value;
+
+      // using built in JSON utility package turn object to string and store in a variable
+      var raw = JSON.stringify({ "firstName": firstName, "lastName": lastName, "email": email, "message": message });
+      // create a JSON object with parameters for API call and store in a variable
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      // make API call with parameters and use promises to get response
+      fetch("https://oyw9mja0q3.execute-api.us-east-2.amazonaws.com/dev3210", requestOptions)
+        .then(response => response.text())
+        .then(result => alert(JSON.parse(result).body))
+        .catch(error => console.log('error', error));
+    }
+
+
+  </script>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Association Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+          <!-- <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> //-->
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Begin page content -->
+  <main class="flex-shrink-0">
+    <div class="container">
+      <h1 class="mt-5 mb-5">Get in touch!</h1>
+      <div>
+        <div class="mb-3 row">
+          <div class="col-4 col-lg-2 text-end">
+            <label for="fName" class="form-label">First Name :</label>
+          </div>
+          <div class="col-8 col-lg-8">
+            <input type="text" id="fName" class="form-control" />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-4 col-lg-2 text-end">
+            <label for="lName" class="form-label">Last Name :</label>
+          </div>
+          <div class="col-8 col-lg-8">
+            <input type="text" id="lName" class="form-control" />
+          </div>
+          <div class="col-8">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-4 col-lg-2 text-end">
+            <label for="email" class="form-label">Your Email:</label>
+          </div>
+          <div class="col-8 col-lg-8">
+            <input type="text" id="email" class="form-control" />
+          </div>
+          <div class="col-8">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-4 col-lg-2 text-end">
+            <label for="message" class="form-label">Message:</label>
+          </div>
+          <div class="col-8 col-lg-8">
+            <textarea id="message" rows="6" cols="60" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-4 col-lg-2 text-end">
+
+          </div>
+          <div class="col-8 col-lg-8">
+            <button type="button" class="btn btn-primary" onclick="callAPI()">Send Message</button>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <div class="col-4 col-lg-2 text-end">.
+          </div>
+          <div class="col-8 col-lg-8">
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <div class="card">
+              <div class="card-header text-muted">
+                Note to Spammers
+              </div>
+              <div class="card-body text-muted">
+                <blockquote class="blockquote mb-0">
+                  <p>Please try exploiting another site. We are not going to buy your bot, accept your millions for a
+                    cut,
+                    buy fashionable items from your site, invest in your crypto, etc.</p>
+                  <footer class="blockquote-footer">With gratitiude <cite title="Source Title">a humble developer</cite>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        </form>
+
+
+
+      </div>
+  </main>
+
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">Association Dashboard &copy;2022 All Rights Reserved</span>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
